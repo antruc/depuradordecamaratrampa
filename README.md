@@ -6,6 +6,9 @@ Programa para filtrar imagenes de camaras trampa en donde se haya detectado un o
 
 Construido con [Toga](https://github.com/beeware/toga) y [Briefcase](https://github.com/beeware/briefcase)
 
+![alt text](dct-linux.png)
+![alt text](dct-windows.png)
+
 # Build on Linux
 
 1. Crea un entorno virtual:
