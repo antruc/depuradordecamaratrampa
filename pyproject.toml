@@ -3,7 +3,7 @@
 project_name = "Depurador de Camara Trampa"
 bundle = "dev.antruc"
 version = "0.0.1"
-url = "https://antruc.dev/depuradordecamaratrampa"
+url = "https://github.com/antruc/depuradordecamaratrampa"
 license.file = "LICENSE"
 author = "Antruc"
 author_email = "admin@antruc.dev"
