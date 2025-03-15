@@ -1,6 +1,6 @@
 import toga
 from toga.style import Pack
-from toga.style.pack import COLUMN, ROW, CENTER
+from toga.style.pack import COLUMN, ROW
 
 from ultralytics import YOLO
 
