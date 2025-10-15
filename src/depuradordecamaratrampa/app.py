@@ -80,6 +80,8 @@ class DepuradordeCamaraTrampa(toga.App):
         try:
             results = model.predict(
                 self.input_path,
+                # 0: 'person', 14: 'bird', 15: 'cat', 16: 'dog', 17: 'horse', 18: 'sheep'
+                # 19: 'cow', 20: 'elephant', 21: 'bear', 22: 'zebra', 23: 'giraffe'
                 classes=[0, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
                 stream=True,
                 verbose=False,
