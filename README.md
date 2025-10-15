@@ -11,17 +11,15 @@ Construido con [Toga](https://github.com/beeware/toga) y [Briefcase](https://git
 
 # Build on Linux
 
-1. Crea un entorno virtual:
-```
-mkdir dct
-cd dct
-python3 -m venv dct-venv
-source dct-venv/bin/activate
-```
-2. Clona este repositorio:
+1. Clona este repositorio:
 ```
 git clone https://github.com/antruc/depuradordecamaratrampa.git
 cd depuradordecamaratrampa
+```
+2. Crea un entorno virtual:
+```
+python3 -m venv env
+source env/bin/activate
 ```
 3. Instala las dependencias:
 ```
