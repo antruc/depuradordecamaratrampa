@@ -2,7 +2,7 @@
 [tool.briefcase]
 project_name = "Depurador de Camara Trampa"
 bundle = "dev.antruc"
-version = "0.0.1"
+version = "0.0.2"
 url = "https://github.com/antruc/depuradordecamaratrampa"
 license.file = "LICENSE"
 author = "Antruc"
@@ -39,6 +39,7 @@ requires = [
 [tool.briefcase.app.depuradordecamaratrampa.linux]
 requires = [
     "toga-gtk~=0.4.7",
+    "pygobject==3.50.0",
 ]
 
 [tool.briefcase.app.depuradordecamaratrampa.linux.system.debian]
