@@ -2,7 +2,7 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Programa para filtrar imagenes de camaras trampa en donde se haya detectado un objeto usando [Ultralytics YOLO AI](https://github.com/ultralytics/ultralytics) y [ONNX Runtime](https://github.com/microsoft/onnxruntime)
+Programa para filtrar las imagenes de cámaras trampa en donde aparezca un animal mediante [Ultralytics YOLO AI](https://github.com/ultralytics/ultralytics) y [ONNX Runtime](https://github.com/microsoft/onnxruntime)
 
 Construido con [Toga](https://github.com/beeware/toga) y [Briefcase](https://github.com/beeware/briefcase)
 
@@ -33,4 +33,4 @@ briefcase package
 ```
 Y por ultimo instala el programa
 
-Para crear un instalador para otros sistemas operativos se puede seguir el tutorial en la pagina de [BeeWare](https://docs.beeware.org/es/latest/tutorial/tutorial-0.html)
+Para crear un instalador para otros sistemas operativos se puede seguir el tutorial en la pagina de [BeeWare](https://tutorial.beeware.org/es/latest/tutorial/tutorial-0/)
