@@ -23,7 +23,7 @@ source env/bin/activate
 ```
 3. Instala las dependencias:
 ```
-pip install briefcase ultralytics onnx onnxruntime
+pip install briefcase
 ```
 4. Construye la aplicación:
 ```
