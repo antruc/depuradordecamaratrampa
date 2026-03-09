@@ -1,33 +1,34 @@
+import pathlib
+import shutil
+import threading
+import time
+
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
 
 from ultralytics import YOLO
 
-from pathlib import Path
-import shutil
-import threading
-import time
-
 
 class DepuradordeCamaraTrampa(toga.App):
     def startup(self):
+
         # Create Toga components
         main_box = toga.Box(style=Pack(direction=COLUMN))
-        input_box = toga.Box(style=Pack(direction=ROW, padding=10))
+        input_box = toga.Box(style=Pack(direction=ROW, margin=10))
         output_box = toga.Box(
-            style=Pack(direction=ROW, padding_right=10, padding_left=10)
+            style=Pack(direction=ROW, margin_right=10, margin_left=10)
         )
         progress_box = toga.Box(
-            style=Pack(direction=ROW, padding_right=10, padding_left=10, padding_top=15)
+            style=Pack(direction=ROW, margin_right=10, margin_left=10, margin_top=15)
         )
-        run_box = toga.Box(style=Pack(direction=ROW, padding=10))
+        run_box = toga.Box(style=Pack(direction=ROW, margin=10))
 
         self.input_label = toga.Label(
-            "Seleccione carpeta de origen", style=Pack(padding_top=3, padding_left=10)
+            "Seleccione carpeta de origen", style=Pack(margin_top=3, margin_left=10)
         )
         self.output_label = toga.Label(
-            "Seleccione carpeta de destino", style=Pack(padding_top=3, padding_left=10)
+            "Seleccione carpeta de destino", style=Pack(margin_top=3, margin_left=10)
         )
 
         self.input_button = toga.Button("Entrada", on_press=self.select_input_folder)
@@ -40,7 +41,12 @@ class DepuradordeCamaraTrampa(toga.App):
         )
 
         # Initialize variables
-        # self.buttons = [self.input_button, self.output_button, self.run_button]
+        self.buttons = [
+            self.input_button,
+            self.output_button,
+            self.run_button,
+        ]  # Doesn't work on Windows
+
         self.run_finished = False
 
         # Add components into boxes
@@ -73,7 +79,7 @@ class DepuradordeCamaraTrampa(toga.App):
         self.running = True
 
         # Load model
-        model_path = Path(__file__).parent / "yolo11n-dynamic.onnx"
+        model_path = pathlib.Path(__file__).parent / "yolo26n-dynamic.onnx"
         model = YOLO(model_path, task="detect")
 
         # Run prediction
@@ -88,7 +94,7 @@ class DepuradordeCamaraTrampa(toga.App):
             )
             last_file = ""
 
-            # self.disable_buttons()
+            self.disable_buttons()  # Doesn't work on Windows
             self.start_progress_bar()
 
             # Iterate over results and copy images with detections
@@ -105,10 +111,13 @@ class DepuradordeCamaraTrampa(toga.App):
                 if self.running == False:
                     raise AttributeError
 
-            # self.enable_buttons()
+            self.enable_buttons()  # Doesn't work on Windows
+
             self.run_finished = True
+
             self.stop_progress_bar()
             time.sleep(1)
+
             self.run_finished = False
         except AttributeError:
             if self.input_label.text == "Seleccione carpeta de origen":
@@ -117,17 +126,17 @@ class DepuradordeCamaraTrampa(toga.App):
             if self.output_label.text == "Seleccione carpeta de destino":
                 self.output_label.text = "Error: Debe seleccionar una carpeta"
 
-            # self.enable_buttons()
+            self.enable_buttons()  # Doesn't work on Windows
             self.stop_progress_bar()
 
         except FileNotFoundError:
             self.input_label.text = "Error: No se encontraron archivos soportados"
-            # self.enable_buttons()
+            self.enable_buttons()  # Doesn't work on Windows
             self.stop_progress_bar()
 
         except Exception:
             self.input_label.text = "Error: Hay un problema con sus archivos"
-            # self.enable_buttons()
+            self.enable_buttons()  # Doesn't work on Windows
             self.stop_progress_bar()
 
     def cancel_run(self, widget):
@@ -151,16 +160,15 @@ class DepuradordeCamaraTrampa(toga.App):
         except ValueError:
             self.output_label.text = "Carpeta sin seleccionar"
 
-    """ 
-    Doesn't work on Windows
+    # Doesn't work on Windows
     def enable_buttons(self):
         for button in self.buttons:
-        button.enabled = True
+            button.enabled = True
 
+    # Doesn't work on Windows
     def disable_buttons(self):
         for button in self.buttons:
-        button.enabled = False
-    """
+            button.enabled = False
 
     def start_progress_bar(self):
         self.loop.call_soon_threadsafe(self.progress_bar_start)
